@@ -1,4 +1,4 @@
-#!/home/bread/cat/avito-test/venv/bin/python3
+#!/home/a/cat/avito-test/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
