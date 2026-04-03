@@ -25,14 +25,12 @@ class ApiClient:
         """Create a new advertisement"""
         response = self.session.post(f"{self.BASE_URL}/api/1/item", json=data)
         if response.status_code != 200:
-            # Don't raise, return error info for debugging
             return {
                 "error": True,
                 "status_code": response.status_code,
                 "message": response.text,
             }
         result = response.json()
-        # API may return different ID field names
         if isinstance(result, dict):
             if "id" not in result and "ad_id" in result:
                 result["id"] = result["ad_id"]

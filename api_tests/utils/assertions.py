@@ -10,11 +10,9 @@ class Assertions:
     @allure.step("Check HTTP status code")
     def assert_status_code(response, expected_code: int):
         """Check HTTP status code"""
-        # Handle case where response is already a dict (not Response object)
         if hasattr(response, "status_code"):
             actual_code = response.status_code
         else:
-            # If it's a dict from successful request, assume 200
             actual_code = 200
 
         assert (
