@@ -8,7 +8,6 @@ import random
 @allure.feature("Positive Scenarios")
 @allure.story("Create Advertisements")
 class TestPositiveCreate:
-
     @allure.title("P-01: Create advertisement with valid data")
     @pytest.mark.smoke
     def test_create_ad_success(self, api_client, unique_seller_id):
@@ -18,13 +17,13 @@ class TestPositiveCreate:
             "price": 1000,
             "likes": 0,
             "viewCount": 0,
-            "contacts": 0
+            "contacts": 0,
         }
         response = api_client.create_ad(data)
-        
+
         if response.get("error"):
             pytest.fail(f"Creation failed: {response.get('message')}")
-        
+
         assert "id" in response or "ad_id" in response, "Response should contain ID"
 
     @allure.title("P-05: Create advertisement with minimum price (0)")
@@ -36,7 +35,7 @@ class TestPositiveCreate:
             "price": 0,
             "likes": 0,
             "viewCount": 0,
-            "contacts": 0
+            "contacts": 0,
         }
         response = api_client.create_ad(data)
         if response.get("error"):
@@ -51,7 +50,7 @@ class TestPositiveCreate:
             "price": 999999999,
             "likes": 0,
             "viewCount": 0,
-            "contacts": 0
+            "contacts": 0,
         }
         response = api_client.create_ad(data)
         if response.get("error"):
@@ -65,7 +64,7 @@ class TestPositiveCreate:
             "price": 1000,
             "likes": 0,
             "viewCount": 0,
-            "contacts": 0
+            "contacts": 0,
         }
         response = api_client.create_ad(data)
         if response.get("error"):
@@ -75,7 +74,6 @@ class TestPositiveCreate:
 @allure.feature("Positive Scenarios")
 @allure.story("Get Advertisements")
 class TestPositiveGet:
-
     @allure.title("P-02: Get existing advertisement by ID")
     @pytest.mark.smoke
     def test_get_ad_by_id_success(self, api_client, unique_seller_id):
@@ -86,12 +84,12 @@ class TestPositiveGet:
             "price": 500,
             "likes": 0,
             "viewCount": 0,
-            "contacts": 0
+            "contacts": 0,
         }
         create_response = api_client.create_ad(data)
         if create_response.get("error"):
             pytest.fail(f"Failed to create test ad: {create_response.get('message')}")
-        
+
         ad_id = create_response.get("id") or create_response.get("ad_id")
         response = api_client.get_ad_by_id(ad_id)
 
@@ -108,10 +106,10 @@ class TestPositiveGet:
                 "price": 1000 + i,
                 "likes": 0,
                 "viewCount": 0,
-                "contacts": 0
+                "contacts": 0,
             }
             api_client.create_ad(data)
-        
+
         response = api_client.get_ads_by_seller(unique_seller_id)
         assert isinstance(response, list)
 
@@ -125,7 +123,7 @@ class TestPositiveGet:
             "price": 1000,
             "likes": 5,
             "viewCount": 100,
-            "contacts": 3
+            "contacts": 3,
         }
         create_response = api_client.create_ad(data)
         if create_response.get("error"):

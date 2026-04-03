@@ -29,12 +29,14 @@ def valid_ad_data(unique_seller_id: int) -> Dict[str, Any]:
         "price": random.randint(100, 100000),
         "likes": 0,  # Required field!
         "viewCount": 0,  # May also be required
-        "contacts": 0   # May also be required
+        "contacts": 0,  # May also be required
     }
 
 
 @pytest.fixture
-def created_ad(api_client: ApiClient, valid_ad_data: Dict[str, Any]) -> Tuple[str, Dict[str, Any]]:
+def created_ad(
+    api_client: ApiClient, valid_ad_data: Dict[str, Any]
+) -> Tuple[str, Dict[str, Any]]:
     """Create advertisement and return its ID and data"""
     response = api_client.create_ad(valid_ad_data)
     if response.get("error"):
@@ -55,7 +57,7 @@ def created_ads_for_seller(api_client: ApiClient, unique_seller_id: int) -> list
             "price": 1000 + i * 100,
             "likes": 0,
             "viewCount": 0,
-            "contacts": 0
+            "contacts": 0,
         }
         response = api_client.create_ad(data)
         if not response.get("error"):

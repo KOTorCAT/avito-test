@@ -6,7 +6,6 @@ import pytest
 
 @allure.feature("E2E Scenarios")
 class TestE2E:
-
     @allure.title("F-01: Complete advertisement lifecycle")
     @pytest.mark.smoke
     def test_complete_lifecycle(self, api_client, unique_seller_id):
@@ -17,11 +16,13 @@ class TestE2E:
             "price": 5000,
             "likes": 0,
             "viewCount": 0,
-            "contacts": 0
+            "contacts": 0,
         }
         create_response = api_client.create_ad(data)
-        assert not create_response.get("error"), f"Failed to create ad: {create_response.get('message')}"
-        
+        assert not create_response.get(
+            "error"
+        ), f"Failed to create ad: {create_response.get('message')}"
+
         ad_id = create_response.get("id") or create_response.get("ad_id")
         assert ad_id, "Failed to get ad ID"
 

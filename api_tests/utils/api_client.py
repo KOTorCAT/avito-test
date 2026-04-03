@@ -12,11 +12,13 @@ class ApiClient:
 
     def __init__(self):
         self.session = requests.Session()
-        self.session.headers.update({
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "User-Agent": "Avito-Tests/1.0"
-        })
+        self.session.headers.update(
+            {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "User-Agent": "Avito-Tests/1.0",
+            }
+        )
 
     @allure.step("POST /api/1/item - Create advertisement")
     def create_ad(self, data: Dict[str, Any]) -> Dict[str, Any]:
@@ -24,7 +26,11 @@ class ApiClient:
         response = self.session.post(f"{self.BASE_URL}/api/1/item", json=data)
         if response.status_code != 200:
             # Don't raise, return error info for debugging
-            return {"error": True, "status_code": response.status_code, "message": response.text}
+            return {
+                "error": True,
+                "status_code": response.status_code,
+                "message": response.text,
+            }
         result = response.json()
         # API may return different ID field names
         if isinstance(result, dict):
@@ -39,7 +45,10 @@ class ApiClient:
         if response.status_code == 404:
             return {"error": "not_found", "status_code": 404}
         if response.status_code != 200:
-            return {"error": f"HTTP {response.status_code}", "status_code": response.status_code}
+            return {
+                "error": f"HTTP {response.status_code}",
+                "status_code": response.status_code,
+            }
         data = response.json()
         if isinstance(data, list) and len(data) > 0:
             return data[0]

@@ -8,7 +8,6 @@ import random
 
 @allure.feature("Idempotency and Corner Cases")
 class TestIdempotency:
-
     @allure.title("C-01: Repeated POST with same data - different IDs")
     @pytest.mark.idempotency
     def test_create_same_ad_twice(self, api_client, unique_seller_id):
@@ -18,7 +17,7 @@ class TestIdempotency:
             "price": 1000,
             "likes": 0,
             "viewCount": 0,
-            "contacts": 0
+            "contacts": 0,
         }
         first = api_client.create_ad(data)
         second = api_client.create_ad(data)
@@ -40,7 +39,7 @@ class TestIdempotency:
             "price": 1000,
             "likes": 0,
             "viewCount": 0,
-            "contacts": 0
+            "contacts": 0,
         }
         create_response = api_client.create_ad(data)
         ad_id = create_response.get("id") or create_response.get("ad_id")
@@ -53,7 +52,7 @@ class TestIdempotency:
         for field in ["createdAt", "updatedAt"]:
             first.pop(field, None)
             second.pop(field, None)
-        
+
         assert first == second, "Multiple GET requests should return identical data"
 
     @allure.title("C-04: Concurrent advertisement creation")
@@ -66,7 +65,7 @@ class TestIdempotency:
                 "price": 1000,
                 "likes": 0,
                 "viewCount": 0,
-                "contacts": 0
+                "contacts": 0,
             }
             return api_client.create_ad(data)
 
@@ -89,7 +88,7 @@ class TestIdempotency:
             "viewCount": 0,
             "contacts": 0,
             "extraField": "should be ignored",
-            "anotherExtra": 12345
+            "anotherExtra": 12345,
         }
         response = api_client.create_ad(data)
         assert "id" in response or "ad_id" in response, "Creation should succeed"

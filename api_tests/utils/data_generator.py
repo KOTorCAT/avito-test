@@ -3,7 +3,7 @@
 import random
 from faker import Faker
 
-fake = Faker('ru_RU')
+fake = Faker("ru_RU")
 
 
 class DataGenerator:
@@ -24,8 +24,8 @@ class DataGenerator:
             "statistics": {
                 "likes": random.randint(0, 1000),
                 "viewCount": random.randint(0, 10000),
-                "contacts": random.randint(0, 100)
-            }
+                "contacts": random.randint(0, 100),
+            },
         }
 
     @staticmethod
@@ -35,25 +35,19 @@ class DataGenerator:
             "sellerId": seller_id or DataGenerator.generate_seller_id(),
             "name": fake.catch_phrase()[:50],
             "price": 1000,
-            "statistics": {
-                "likes": 0,
-                "viewCount": 0,
-                "contacts": 0
-            }
+            "statistics": {"likes": 0, "viewCount": 0, "contacts": 0},
         }
 
     @staticmethod
-    def generate_ad_data_with_custom_stats(seller_id: int = None, likes: int = 0, views: int = 0, contacts: int = 0) -> dict:
+    def generate_ad_data_with_custom_stats(
+        seller_id: int = None, likes: int = 0, views: int = 0, contacts: int = 0
+    ) -> dict:
         """Generate ad data with custom statistics values"""
         return {
             "sellerId": seller_id or DataGenerator.generate_seller_id(),
             "name": fake.catch_phrase()[:50],
             "price": random.randint(100, 10000),
-            "statistics": {
-                "likes": likes,
-                "viewCount": views,
-                "contacts": contacts
-            }
+            "statistics": {"likes": likes, "viewCount": views, "contacts": contacts},
         }
 
     @staticmethod
