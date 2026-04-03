@@ -79,10 +79,6 @@ pytest api_tests/test_negative.py -v
 # Только быстрая проверка
 pytest -m smoke
 
-# С Allure отчётом
-pytest --alluredir=allure-results
-allure generate allure-results -o allure-report --clean
-allure open allure-report
 ```
 
 ## Структура проекта
@@ -154,27 +150,9 @@ brew install allure
 # Скачать с https://github.com/allure-framework/allure2/releases
 ```
 
-## Частые вопросы
-
-**Вопрос:** Почему тесты падают?  
-**Ответ:** Потому что в API есть баг. Тесты работают правильно и нашли проблему.
-
-**Вопрос:** Как узнать, какие тесты прошли?  
-**Ответ:** В консоли зелёным написано PASSED, красным FAILED, жёлтым SKIPPED.
-
-**Вопрос:** Нужно ли править тесты, чтобы они проходили?  
-**Ответ:** Нет. Тесты должны падать, пока API не починят.
-
 ## Полезные ссылки
 
 - [Описание тестов](TESTCASES.md)
 - [Найденные баги](BUGS.md)
-- [Allure отчёт](allure-report/index.html)
 ```
 
-Этот README.md:
-- Написан простыми словами
-- Содержит все нужные команды
-- Объясняет, почему тесты падают
-- Указывает на баг в API
-- Не требует лишних действий от проверяющего

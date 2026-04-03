@@ -82,4 +82,3 @@ class TestNegative:
     def test_get_ads_invalid_seller(self, api_client):
         response = api_client.raw_request("GET", "/api/1/invalid_seller/item")
         assert response.status_code in [400, 404]
-
