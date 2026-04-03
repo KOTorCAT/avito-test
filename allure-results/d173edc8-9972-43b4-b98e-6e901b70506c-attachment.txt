@@ -1,0 +1,4 @@
+Created 0 ads
+Average response time: 0.052s
+Min: 0.029s
+Max: 0.284s
