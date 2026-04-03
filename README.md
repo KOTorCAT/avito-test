@@ -1,6 +1,3 @@
-Отлично! Результаты стабильные. Вот итоговый **README.md** для вашего проекта:
-
-```markdown
 # API тесты для Avito
 
 Автотесты для проверки API объявлений Avito (https://qa-internship.avito.com)
