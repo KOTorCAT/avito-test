@@ -48,14 +48,13 @@ class TestIdempotency:
         first = api_client.get_ad_by_id(ad_id)
         second = api_client.get_ad_by_id(ad_id)
 
-        # Remove timestamp fields if they exist
         for field in ["createdAt", "updatedAt"]:
             first.pop(field, None)
             second.pop(field, None)
 
         assert first == second, "Multiple GET requests should return identical data"
 
-    @allure.title("C-04: Concurrent advertisement creation")
+    @allure.title("C-03: Concurrent advertisement creation")
     @pytest.mark.idempotency
     def test_concurrent_creation(self, api_client, unique_seller_id):
         def create():
@@ -77,7 +76,7 @@ class TestIdempotency:
         valid_ids = [i for i in ids if i is not None]
         assert len(set(valid_ids)) == len(valid_ids), "Duplicate IDs detected"
 
-    @allure.title("C-10: Extra fields in JSON are ignored")
+    @allure.title("C-04: Extra fields in JSON are ignored")
     @pytest.mark.corner
     def test_extra_fields_ignored(self, api_client, unique_seller_id):
         data = {

@@ -56,7 +56,7 @@ class TestPositiveCreate:
         if response.get("error"):
             pytest.skip(f"API may not support this price: {response.get('message')}")
 
-    @allure.title("P-08: Create advertisement with Russian characters")
+    @allure.title("P-07: Create advertisement with Russian characters")
     def test_create_ad_russian_name(self, api_client, unique_seller_id):
         data = {
             "sellerId": unique_seller_id,

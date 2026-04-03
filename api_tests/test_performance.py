@@ -47,7 +47,6 @@ class TestPerformance:
                 if ad_id:
                     ids.append(ad_id)
 
-        # All IDs should be unique
         assert len(set(ids)) == len(ids), "Duplicate IDs detected"
 
         avg_time = sum(times) / len(times)
