@@ -1,0 +1,7 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"","E2E Scenarios","","1","0","0","0","0"
+"","Non-functional Tests","","0","0","1","1","0"
+"","Positive Scenarios","Create Advertisements","2","0","0","2","0"
+"","Idempotency and Corner Cases","","3","0","1","0","0"
+"","Negative Scenarios","","0","0","7","0","0"
+"","Positive Scenarios","Get Advertisements","2","1","0","0","0"

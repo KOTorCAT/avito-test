@@ -154,5 +154,15 @@ brew install allure
 
 - [Описание тестов](TESTCASES.md)
 - [Найденные баги](BUGS.md)
-```
 
+
+## Allure отчёт
+
+<p align="center">
+  <img src="report.jpg" alt="Allure отчёт" width="800">
+</p>
+
+<p align="center">
+  <em>Результаты тестирования в Allure</em>
+</p>
+```
