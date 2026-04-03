@@ -165,4 +165,3 @@ brew install allure
 <p align="center">
   <em>Результаты тестирования в Allure</em>
 </p>
-```

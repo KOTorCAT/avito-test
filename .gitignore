@@ -1,0 +1,23 @@
+# Виртуальное окружение
+venv/
+env/
+.venv/
+
+# Кэш Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Allure временные файлы (но allure-results и allure-report оставить)
+# allure-results/  # раскомментировать, если не нужно
+# allure-report/   # раскомментировать, если не нужно
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
