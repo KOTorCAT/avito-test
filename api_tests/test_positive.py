@@ -77,7 +77,6 @@ class TestPositiveGet:
     @allure.title("P-02: Get existing advertisement by ID")
     @pytest.mark.smoke
     def test_get_ad_by_id_success(self, api_client, unique_seller_id):
-        # Create ad first
         data = {
             "sellerId": unique_seller_id,
             "name": "Test for Get",
@@ -98,7 +97,6 @@ class TestPositiveGet:
     @allure.title("P-03: Get all seller's advertisements")
     @pytest.mark.smoke
     def test_get_ads_by_seller_success(self, api_client, unique_seller_id):
-        # Create 2 ads for this seller
         for i in range(2):
             data = {
                 "sellerId": unique_seller_id,
@@ -116,7 +114,6 @@ class TestPositiveGet:
     @allure.title("P-04: Get advertisement statistics")
     @pytest.mark.smoke
     def test_get_statistics_success(self, api_client, unique_seller_id):
-        # Create ad first
         data = {
             "sellerId": unique_seller_id,
             "name": "Stats Test",

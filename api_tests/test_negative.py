@@ -15,7 +15,6 @@ class TestNegative:
             "statistics": {"likes": 0, "viewCount": 0, "contacts": 0},
         }
         response = api_client.raw_request("POST", "/api/1/item", json=data)
-        # API может требовать name
         assert response.status_code in [
             400,
             422,
@@ -57,23 +56,22 @@ class TestNegative:
         response = api_client.raw_request("POST", "/api/1/item", json=data)
         assert response.status_code in [400, 422]
 
-    @allure.title("N-06: Get advertisement by non-existent ID")
+    @allure.title("N-05: Get advertisement by non-existent ID")
     @pytest.mark.regression
     def test_get_ad_invalid_id(self, api_client):
         response = api_client.raw_request("GET", "/api/1/item/nonexistent_id_12345")
-        # API может возвращать 400 или 404
         assert response.status_code in [
             400,
             404,
         ], f"Expected 400/404, got {response.status_code}"
 
-    @allure.title("N-08: Get advertisements with invalid sellerId")
+    @allure.title("N-06: Get advertisements with invalid sellerId")
     @pytest.mark.regression
     def test_get_ads_invalid_seller(self, api_client):
         response = api_client.raw_request("GET", "/api/1/invalid_seller/item")
         assert response.status_code in [400, 404]
 
-    @allure.title("N-09: Create advertisement with price = null")
+    @allure.title("N-07: Create advertisement with price = null")
     @pytest.mark.regression
     def test_create_ad_null_price(self, api_client, unique_seller_id):
         data = {
